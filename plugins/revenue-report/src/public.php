@@ -78,6 +78,8 @@ if (
         ];
     }
 
+    $grandTotalIssued = 0;
+    $grandTotalPaid = 0;
     foreach ($invoices as $invoice) {
         foreach ($invoice['items'] as $invoiceItem) {
             if ($invoiceItem['type'] === 'service' && isset($invoiceItem['serviceId']) && isset($servicesMap[$invoiceItem['serviceId']])) {
@@ -87,8 +89,10 @@ if (
                     continue;
                 }
                 $servicePlansMap[$servicePlanId]['totalIssued'] += $price;
+                $grandTotalIssued += $price;
                 if ($invoice['status'] === 3) {
                     $servicePlansMap[$servicePlanId]['totalPaid'] += $price;
+                    $grandTotalPaid += $price;
                 }
             }
         }
