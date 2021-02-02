@@ -17,6 +17,13 @@
                     </tr>
                 <?php } ?>
             </tbody>
+            <tfoot>
+                <tr>
+                  <td>Total</td>
+                  <td><?php echo number_format($servicePlan['grandTotalIssued'], 2) . ' ' . $result['currency']; ?></td>
+                  <td><?php echo number_format($servicePlan['grandTotalPaid'], 2) . ' ' . $result['currency']; ?></td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
